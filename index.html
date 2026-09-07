@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050709">
+  <meta name="description" content="Voltux: computadores gamers, componentes e serviços para seu PC. Escolha os itens e converse diretamente com a loja pelo WhatsApp.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <title>Voltux - Seu próximo nível começa aqui</title>
+  <link rel="icon" type="image/png" href="assets/logo-voltux.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="loja-config.js" defer></script>
+  <script src="loja-core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#servicos">Ir para os serviços</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v2"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.7A9 9 0 0 1 7.6 19.5L3 21l1.4-4.6A9 9 0 1 1 21 11.7Z"/><path d="M8 7.5c.3-.3.8-.2 1 .2l1 2c.2.4-.4 1-.7 1.3.8 1.5 1.8 2.5 3.4 3.2.3-.4.9-1.1 1.2-.9l2.1 1c.5.3.4.9.1 1.3-.6.8-1.5 1.1-2.5.7-3.9-1.3-6.8-4.2-6.8-6.8 0-.8.5-1.5 1.2-2Z"/></symbol>
+  </svg>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#inicio" aria-label="Voltux, início"><img class="brand-logo" src="assets/logo-voltux.png" alt="Voltux" width="1024" height="1024"></a>
+      <nav class="main-navigation" aria-label="Navegação principal">
+        <a href="#catalogo" data-nav="catalogo">Catálogo</a>
+        <a href="#servicos" data-nav="servicos">Serviços</a>
+        <a href="#sobre" data-nav="sobre">Sobre</a>
+      </nav>
+      <button class="cart-toggle" type="button" data-open-cart aria-haspopup="dialog" aria-controls="cart-dialog"><svg class="icon"><use href="#i-bag"/></svg><span class="cart-label">Carrinho</span><span class="cart-count" data-cart-count>0</span></button>
+    </div>
+  </header>
+  <main>
+    <section class="main-hero" id="inicio" aria-labelledby="main-title">
+      <div class="hero-watermark" aria-hidden="true"><img src="assets/logo-voltux.png" alt="" width="1024" height="1024"></div><div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-layout container">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow"><span class="live-dot"></span> TECNOLOGIA. POTÊNCIA. PERTO DE VOCÊ.</p>
+          <h1 id="main-title">Seu próximo<br><span>nível.</span></h1>
+          <p class="hero-description">PCs gamers, componentes e periféricos.<br>Escolha no catálogo. Converse com a gente.</p>
+          <div class="hero-actions"><a class="button button-red" href="#catalogo">Abrir catálogo <svg class="icon"><use href="#i-arrow"/></svg></a><a class="text-link" href="#servicos">Conhecer os serviços</a></div>
+          <p class="hero-note">Atendimento local | Compra combinada pelo WhatsApp</p>
+        </div>
+        <div class="hero-visual" data-parallax><div class="hero-image media-slot" data-image-slot="hero-pc" role="img" aria-label="Espaço reservado para a foto do PC Voltux"></div><span class="visual-corner corner-top" aria-hidden="true"></span><span class="visual-corner corner-bottom" aria-hidden="true"></span><span class="visual-caption">PERFORMANCE EM CADA DETALHE</span></div>
+      </div>
+      <a class="scroll-cue" href="#servicos"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> CONHEÇA NOSSOS SERVIÇOS</a>
+    </section>
+    <section class="catalog-section container" id="catalogo" aria-labelledby="catalog-title">
+      <div class="catalog-panel" data-reveal><div><p class="eyebrow">TUDO PARA O SEU SETUP</p><h2 id="catalog-title">O catálogo completo.<br>A escolha é sua.</h2><p>Veja todas as opções e valores atualizados no nosso catálogo.</p><a class="button button-red" id="catalog-link" href="https://www.vendamax.app/ct/voltux-oficial" target="_blank" rel="noopener noreferrer">Abrir catálogo completo</a><p class="catalog-note">Escolheu? Envie o nome ou o link do item pelo WhatsApp.</p></div><div class="catalog-image media-slot" data-image-slot="catalogo" role="img" aria-label="Espaço reservado para a imagem do catálogo"></div></div>
+    </section>
+    <section class="services-section" id="servicos" aria-labelledby="services-title">
+      <div class="services-shell">
+        <div class="services-hero">
+          <div class="services-hero-image media-slot"><img src="assets/servicos/montagem.jpg" alt="Detalhes de uma placa-mãe de computador" width="1200" height="800" loading="lazy"></div>
+          <div class="services-intro" data-reveal><p class="eyebrow">02 / SERVIÇOS</p><h2 id="services-title">SEU PC.<br>NOSSO CUIDADO.</h2><p>Converse com quem vai cuidar do seu setup.<br>Escolha um serviço e combine o atendimento.</p><a class="services-hero-link" href="#lista-servicos"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> CONHECER SERVIÇOS</a></div>
+          <span class="services-side-label" aria-hidden="true">ENERGIA PARA IR ALÉM</span>
+        </div>
+        <div class="services-content" id="lista-servicos">
+          <header class="services-heading" data-reveal><h3>SERVIÇOS PARA O SEU PC</h3><p>Escolha. Converse. Combine.</p></header>
+          <div class="services-grid" id="services-grid"></div>
+          <div class="service-steps" data-reveal><div><span>01</span><p>Escolha os itens</p></div><div><span>02</span><p>Envie pelo WhatsApp</p></div><div><span>03</span><p>Combine com a loja</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section" id="sobre" aria-labelledby="about-title">
+      <div class="about-shell container">
+        <div class="about-heading" data-reveal>
+          <p class="eyebrow section-index">03 / SOBRE</p>
+          <h2 id="about-title">Tecnologia feita<br><span>para você.</span></h2>
+          <p>A Voltux é especializada em computadores, PCs Gamer e soluções de informática, com atendimento próximo, transparente e pensado para a necessidade real de cada cliente.</p>
+        </div>
+        <div class="about-grid">
+          <article class="about-card interactive-card" data-reveal>
+            <span>01</span>
+            <h3>PCs Gamer e computadores personalizados</h3>
+            <p>Trabalhamos com máquinas para jogos, estudos, trabalho, edição e uso profissional. Cada configuração pode ser pensada de acordo com o orçamento e os objetivos do cliente, equilibrando desempenho, qualidade e custo-benefício.</p>
+          </article>
+          <article class="about-card interactive-card" data-reveal>
+            <span>02</span>
+            <h3>Montagem e preparação</h3>
+            <p>Na Voltux, montar um PC vai além de colocar peças no gabinete. Cuidamos da organização, conexão dos cabos, refrigeração e funcionamento geral antes da entrega.</p>
+          </article>
+          <article class="about-card interactive-card" data-reveal>
+            <span>03</span>
+            <h3>Mais do que vender computadores</h3>
+            <p>Atuamos com montagem, upgrades, manutenção, limpeza preventiva, instalação, configuração, peças, periféricos e orientação para escolha de hardware.</p>
+          </article>
+          <article class="about-card interactive-card" data-reveal>
+            <span>04</span>
+            <h3>Transparência em primeiro lugar</h3>
+            <p>Explicamos as opções disponíveis e indicamos o que realmente faz sentido para cada situação, evitando gastos desnecessários e configurações que não atendem ao uso do cliente.</p>
+          </article>
+        </div>
+        <div class="about-mission" data-reveal>
+          <div><p class="eyebrow">MISSÃO</p><p>Oferecer tecnologia de qualidade com atendimento próximo e preço justo, ajudando cada cliente a encontrar a solução ideal.</p></div>
+          <div><p class="eyebrow">VISÃO</p><p>Construir uma marca reconhecida pela confiança, qualidade, custo-benefício e atendimento.</p></div>
+          <a class="button button-red" data-whatsapp="Olá, Voltux! Quero descobrir qual PC combina com meu objetivo e orçamento." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer">Falar com a equipe</a>
+        </div>
+        <div class="why-voltux" data-reveal>
+          <div><strong>Custo-benefício</strong><span>Configurações equilibradas para o seu orçamento.</span></div>
+          <div><strong>Personalização</strong><span>Seu computador pensado de acordo com o seu objetivo.</span></div>
+          <div><strong>Testes</strong><span>Funcionamento verificado antes da entrega.</span></div>
+          <div><strong>Atendimento próximo</strong><span>Dúvidas respondidas antes e depois da compra.</span></div>
+          <div><strong>Transparência</strong><span>Opções explicadas para uma decisão consciente.</span></div>
+        </div>
+        <div class="about-closing" data-reveal>
+          <h3>Voltux - Seu desempenho começa aqui.</h3>
+          <p>Seja para jogar, estudar, trabalhar ou simplesmente ter um computador melhor, conte com a Voltux para encontrar a configuração certa para você.</p>
+        </div>
+        <div class="faq-block" data-reveal>
+          <div class="faq-title">
+            <p class="eyebrow section-index">FAQ</p>
+            <h3>Perguntas frequentes</h3>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>A Voltux monta PCs personalizados?</summary>
+              <p>Sim. Montamos computadores de acordo com o objetivo e o orçamento de cada cliente, seja para jogar, estudar, trabalhar ou realizar tarefas mais pesadas.</p>
+            </details>
+            <details>
+              <summary>Os computadores são testados antes da entrega?</summary>
+              <p>Sim. Realizamos testes para verificar o funcionamento dos principais componentes e garantir que o equipamento esteja funcionando corretamente antes de ser entregue.</p>
+            </details>
+            <details>
+              <summary>Posso escolher as peças do meu PC?</summary>
+              <p>Sim. Você pode informar seu orçamento e objetivo, e nossa equipe ajuda a escolher uma configuração equilibrada, evitando componentes desnecessários e buscando o melhor custo-benefício.</p>
+            </details>
+            <details>
+              <summary>A Voltux oferece manutenção e upgrades?</summary>
+              <p>Sim. Trabalhamos com manutenção, limpeza, upgrades, instalação e configuração de computadores, além da venda de peças e periféricos.</p>
+            </details>
+            <details>
+              <summary>Como posso comprar ou pedir um orçamento?</summary>
+              <p>É simples: entre em contato com a Voltux pelos canais de atendimento, informe o que você procura e, se possível, seu orçamento. Nossa equipe orienta você e apresenta as melhores opções para sua necessidade.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container"><div><a class="wordmark" href="#inicio"><img class="brand-logo" src="assets/logo-voltux.png" alt="Voltux" width="1024" height="1024"></a><p>Seu setup. Nossa energia.</p></div><div class="footer-security" aria-label="Selo de site seguro"><svg class="icon"><use href="#i-lock"/></svg><div><strong>Site seguro</strong><span>Sem login de cliente. Finalização direta pelo WhatsApp.</span></div></div><a class="instagram-link" data-instagram href="https://www.instagram.com/voltuxoficial/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-instagram"/></svg>@voltuxoficial</a><a class="footer-contact" data-whatsapp="Olá, Voltux! Gostaria de falar com a loja." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer">Fale com a loja <span data-phone-label>(31) 99712-5608</span></a></footer>
+  <div class="floating-socials" aria-label="Atalhos sociais"><a class="instagram-float" data-instagram href="https://www.instagram.com/voltuxoficial/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Voltux"><svg class="icon"><use href="#i-instagram"/></svg></a><a class="whatsapp-float" data-whatsapp="Olá, Voltux! Vim pelo site e gostaria de conversar." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Voltux no WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg><span>Falar no WhatsApp</span></a></div>
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title"><div class="cart-shell"><header class="cart-header"><div><p class="eyebrow">VAMOS CONVERSAR?</p><h2 id="cart-title">Seu carrinho</h2></div><button class="icon-button" type="button" id="close-cart" aria-label="Fechar carrinho"><svg class="icon"><use href="#i-close"/></svg></button></header><p class="cart-explanation">Escolha os serviços e combine o atendimento diretamente com a loja.</p><div id="cart-items" class="cart-items"></div><footer class="cart-footer"><div id="cart-summary"></div><a class="button button-whatsapp" id="cart-checkout" href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-whatsapp"/></svg>Continuar no WhatsApp</a><button class="text-link" id="continue-browsing" type="button">Continuar explorando</button></footer></div></dialog>
+  <div class="toast" role="status" aria-live="polite" id="toast"></div>
+  <noscript><p class="noscript-message">Ative o JavaScript para explorar os itens e montar seu carrinho. Você também pode <a href="https://wa.me/5531997125608">falar diretamente com a Voltux no WhatsApp</a>.</p></noscript>
+</body>
+</html>

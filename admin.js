@@ -78,6 +78,9 @@
   document.getElementById('setting-instagram').value = original.instagram;
   document.getElementById('setting-image-hero').value = original.imagens?.hero || '';
   document.getElementById('setting-image-catalog').value = original.imagens?.catalogo || '';
+  document.getElementById('setting-image-services').value = original.imagens?.servicos || '';
+  document.getElementById('setting-image-about').value = original.imagens?.sobre || '';
+  document.getElementById('setting-image-footer').value = original.imagens?.rodape || '';
   original.servicos.forEach(item => addRow(item, true));
   function newId(prefix) { return `${prefix}-${Date.now().toString(36)}-${++rowCounter}`; }
   document.getElementById('add-service').addEventListener('click', () => {
@@ -104,7 +107,10 @@
       catalogoUrl: document.getElementById('setting-catalog').value.trim(),
       imagens: {
         hero: document.getElementById('setting-image-hero').value.trim(),
-        catalogo: document.getElementById('setting-image-catalog').value.trim()
+        catalogo: document.getElementById('setting-image-catalog').value.trim(),
+        servicos: document.getElementById('setting-image-services').value.trim(),
+        sobre: document.getElementById('setting-image-about').value.trim(),
+        rodape: document.getElementById('setting-image-footer').value.trim()
       },
       produtos: [],
       servicos: [...document.querySelectorAll('#service-editor .editor-item')].map(row => readRow(row, true))

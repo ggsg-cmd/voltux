@@ -56,6 +56,105 @@
     slot.removeAttribute('aria-label');
     slot.replaceChildren(image);
   }
+  function cssImageValue(source) {
+    const cleanSource = typeof source === 'string' ? source.trim() : '';
+    if (!cleanSource) return '';
+    if (!core.safeWebUrl(cleanSource) && (/^[a-z][a-z0-9+.-]*:/i.test(cleanSource) || cleanSource.startsWith('//'))) return '';
+    return `url("${cleanSource.replace(/[\\"]/g, '\\$&')}")`;
+  }
+  function fillBackground(slotName, source) {
+    const target = document.querySelector(`[data-bg-slot="${slotName}"]`);
+    const value = cssImageValue(source);
+    if (target && value) target.style.setProperty('--section-bg', value);
+  }
+  function initParticleCanvas() {
+    const canvas = document.getElementById('voltux-particles');
+    if (!canvas || reducedMotion.matches) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let width = 0;
+    let height = 0;
+    let nodes = [];
+    let beams = [];
+    let raf = 0;
+    const chars = 'VOLTUX0123456789PCSETUPRGB'.split('');
+    const mouse = { x: -9999, y: -9999 };
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.max(1, Math.floor(width * dpr));
+      canvas.height = Math.max(1, Math.floor(height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      nodes = Array.from({ length: Math.max(34, Math.round(width / 16)) }, () => ({ x: Math.random() * width, y: Math.random() * height, vy: Math.random() * .32 + .08, char: chars[Math.floor(Math.random() * chars.length)] }));
+      beams = Array.from({ length: Math.max(12, Math.round(width / 55)) }, () => ({ x: Math.random() * width, y: Math.random() * height, speed: Math.random() * 4 + 2, length: Math.random() * 120 + 50, opacity: Math.random() * .32 + .16 }));
+    }
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      beams.forEach(beam => {
+        beam.y -= beam.speed;
+        if (beam.y + beam.length < 0) { beam.y = height + beam.length; beam.x = Math.random() * width; }
+        const gradient = ctx.createLinearGradient(beam.x, beam.y, beam.x, beam.y + beam.length);
+        gradient.addColorStop(0, `rgba(0,207,255,${beam.opacity})`);
+        gradient.addColorStop(1, 'rgba(240,0,47,0)');
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(beam.x, beam.y);
+        ctx.lineTo(beam.x, beam.y + beam.length);
+        ctx.stroke();
+      });
+      ctx.font = '12px Consolas, monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 115) {
+            ctx.strokeStyle = `rgba(0,207,255,${0.09 * (1 - dist / 115)})`;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(node => {
+        node.y += node.vy;
+        if (node.y > height + 18) { node.y = -18; node.x = Math.random() * width; }
+        const dist = Math.hypot(mouse.x - node.x, mouse.y - node.y);
+        if (dist < 165 || Math.random() > .985) node.char = chars[Math.floor(Math.random() * chars.length)];
+        if (dist < 165) {
+          ctx.strokeStyle = `rgba(240,0,47,${0.35 * (1 - dist / 165)})`;
+          ctx.beginPath(); ctx.moveTo(node.x, node.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+        ctx.fillStyle = dist < 165 ? '#00cfff' : 'rgba(190,210,222,.36)';
+        ctx.fillText(node.char, node.x, node.y);
+      });
+      raf = requestAnimationFrame(draw);
+    }
+    resize();
+    draw();
+    window.addEventListener('resize', resize, { passive: true });
+    canvas.closest('.main-hero')?.addEventListener('pointermove', event => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+    }, { passive: true });
+    reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) cancelAnimationFrame(raf); });
+  }
+  function initMagneticFooter() {
+    if (reducedMotion.matches || !finePointer.matches) return;
+    document.querySelectorAll('.magnetic-pill').forEach(pill => {
+      pill.addEventListener('pointermove', event => {
+        const rect = pill.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+        pill.style.transform = `translate(${x * .13}px, ${y * .18}px)`;
+      }, { passive: true });
+      pill.addEventListener('pointerleave', () => { pill.style.transform = ''; });
+    });
+  }
   function directLink(item) {
     return core.whatsappUrl(config.whatsapp, core.messageForCart([{ id: item.id, quantidade: 1 }], config));
   }
@@ -90,10 +189,16 @@
   if (!config.catalogoUrl) catalog.textContent = 'Pedir catálogo no WhatsApp';
   fillStaticImage('hero-pc', config.imagens?.hero, 'PC gamer montado pela Voltux');
   fillStaticImage('catalogo', config.imagens?.catalogo, 'Produtos disponíveis no catálogo da Voltux');
+  fillBackground('hero', config.imagens?.hero || 'assets/roxo.jpeg');
+  fillBackground('catalogo', config.imagens?.catalogo || 'assets/branco.jpeg');
+  fillBackground('servicos', config.imagens?.servicos || 'assets/servicos/montagem.jpg');
+  fillBackground('sobre', config.imagens?.sobre || 'assets/branco.jpeg');
+  fillBackground('rodape', config.imagens?.rodape || 'assets/roxo.jpeg');
   document.querySelectorAll('[data-whatsapp]').forEach(link => { link.href = core.whatsappUrl(config.whatsapp, link.dataset.whatsapp); });
   document.querySelectorAll('[data-instagram]').forEach(link => { link.href = core.safeWebUrl(config.instagram); });
   const nationalPhone = config.whatsapp.replace(/^55/, '');
-  document.querySelector('[data-phone-label]').textContent = nationalPhone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+  const phoneLabel = document.querySelector('[data-phone-label]');
+  if (phoneLabel) phoneLabel.textContent = nationalPhone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
 
   function notify(text) {
     const toast = document.getElementById('toast');
@@ -241,5 +346,7 @@
   function scheduleScroll() { if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateScroll); } }
   window.addEventListener('scroll', scheduleScroll, { passive: true });
   window.addEventListener('resize', scheduleScroll, { passive: true });
+  initParticleCanvas();
+  initMagneticFooter();
   updateScroll();
 })();

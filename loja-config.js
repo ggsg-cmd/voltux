@@ -6,7 +6,10 @@ window.VOLTUX_CONFIG = {
   "catalogoUrl": "https://www.vendamax.app/ct/voltux-oficial",
   "imagens": {
     "hero": "assets/roxo.jpeg",
-    "catalogo": "assets/branco.jpeg"
+    "catalogo": "assets/branco.jpeg",
+    "servicos": "assets/servicos/montagem.jpg",
+    "sobre": "assets/branco.jpeg",
+    "rodape": "assets/roxo.jpeg"
   },
   "produtos": [],
   "servicos": [

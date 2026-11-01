@@ -1,0 +1,10 @@
+import { backup } from 'node:sqlite';
+import { mkdirSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { openDatabase } from './db.mjs';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const db=openDatabase(process.env.DB_PATH||path.join(root,'data/voltux.sqlite'));
+const directory=path.join(root,'data/backups');mkdirSync(directory,{recursive:true});
+const destination=path.join(directory,`voltux-${new Date().toISOString().replace(/[:.]/g,'-')}.sqlite`);
+await backup(db,destination);db.close();console.log(`Backup consistente criado: ${destination}`);

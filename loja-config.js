@@ -27,18 +27,18 @@ window.VOLTUX_CONFIG = {
       "nome": "Limpeza comum",
       "descricao": "O cuidado de rotina que seu computador precisa.",
       "imagem": "assets/servicos/limpeza.jpg",
-      "preco": 69.99,
+      "preco": 95,
       "observacaoPreco": "",
-      "aPartirDe": false
+      "aPartirDe": true
     },
     {
       "id": "limpeza-premium",
-      "nome": "Limpeza premium",
+      "nome": "Limpeza a Domicílio",
       "descricao": "Uma limpeza mais cuidadosa para o seu setup.",
       "imagem": "assets/servicos/montagem.jpg",
-      "preco": 125,
+      "preco": 130,
       "observacaoPreco": "",
-      "aPartirDe": false
+      "aPartirDe": true
     },
     {
       "id": "formatacao",
@@ -54,9 +54,9 @@ window.VOLTUX_CONFIG = {
       "nome": "Montagem de PC",
       "descricao": "Converse com a Voltux sobre a montagem do seu computador.",
       "imagem": "assets/servicos/montagem.jpg",
-      "preco": null,
+      "preco": 180,
       "observacaoPreco": "",
-      "aPartirDe": false
+      "aPartirDe": true
     },
     {
       "id": "instalacao-programas",

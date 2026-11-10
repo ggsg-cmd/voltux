@@ -3,7 +3,7 @@ window.VOLTUX_CONFIG = {
   "versao": 1,
   "whatsapp": "5531997125608",
   "instagram": "https://www.instagram.com/voltuxoficial/",
-  "catalogoUrl": "https://www.vendamax.app/ct/voltux-oficial",
+  "catalogoUrl": "https://www.vendamax.app/lj/voltux-infomatica",
   "imagens": {
     "hero": "assets/roxo.jpeg",
     "catalogo": "assets/branco.jpeg",

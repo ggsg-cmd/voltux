@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   'use strict';
   const original = window.VOLTUX_CONFIG;
   const core = window.VoltuxCore;
@@ -76,11 +76,13 @@
   document.getElementById('setting-whatsapp').value = original.whatsapp;
   document.getElementById('setting-catalog').value = original.catalogoUrl;
   document.getElementById('setting-instagram').value = original.instagram;
-  document.getElementById('setting-image-hero').value = original.imagens?.hero || '';
-  document.getElementById('setting-image-catalog').value = original.imagens?.catalogo || '';
-  document.getElementById('setting-image-services').value = original.imagens?.servicos || '';
-  document.getElementById('setting-image-about').value = original.imagens?.sobre || '';
-  document.getElementById('setting-image-footer').value = original.imagens?.rodape || '';
+  document.getElementById('setting-image-hero').value = core.imageSources(original.imagens?.hero).join('\n');
+  document.getElementById('setting-image-catalog').value = core.imageSources(original.imagens?.catalogo).join('\n');
+  document.getElementById('setting-image-services').value = core.imageSources(original.imagens?.servicos).join('\n');
+  document.getElementById('setting-image-about').value = core.imageSources(original.imagens?.sobre).join('\n');
+  document.getElementById('setting-image-footer').value = core.imageSources(original.imagens?.rodape).join('\n');
+  document.getElementById('setting-image-interval').value = original.intervaloFotos || 6;
+  const readImages = id => { const sources = core.imageSources(document.getElementById(id).value); return sources.length > 1 ? sources : sources[0] || ''; };
   original.servicos.forEach(item => addRow(item, true));
   function newId(prefix) { return `${prefix}-${Date.now().toString(36)}-${++rowCounter}`; }
   document.getElementById('add-service').addEventListener('click', () => {
@@ -102,15 +104,16 @@
     if (!form.reportValidity()) return;
     const config = {
       versao: 1,
+      intervaloFotos: Number(document.getElementById('setting-image-interval').value),
       whatsapp: document.getElementById('setting-whatsapp').value.trim(),
       instagram: document.getElementById('setting-instagram').value.trim(),
       catalogoUrl: document.getElementById('setting-catalog').value.trim(),
       imagens: {
-        hero: document.getElementById('setting-image-hero').value.trim(),
-        catalogo: document.getElementById('setting-image-catalog').value.trim(),
-        servicos: document.getElementById('setting-image-services').value.trim(),
-        sobre: document.getElementById('setting-image-about').value.trim(),
-        rodape: document.getElementById('setting-image-footer').value.trim()
+        hero: readImages('setting-image-hero'),
+        catalogo: readImages('setting-image-catalog'),
+        servicos: readImages('setting-image-services'),
+        sobre: readImages('setting-image-about'),
+        rodape: readImages('setting-image-footer')
       },
       produtos: [],
       servicos: [...document.querySelectorAll('#service-editor .editor-item')].map(row => readRow(row, true))
@@ -130,3 +133,4 @@
     status.textContent = 'Configuração baixada. Substitua loja-config.js na pasta do site por este arquivo e recarregue a página. Se houver hospedagem, publique também o arquivo atualizado.';
   });
 })();
+

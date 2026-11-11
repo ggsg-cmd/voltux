@@ -1,15 +1,16 @@
 // Configuração da Voltux. Gerada pelo editor local.
 window.VOLTUX_CONFIG = {
   "versao": 1,
+  "intervaloFotos": 6,
   "whatsapp": "5531997125608",
   "instagram": "https://www.instagram.com/voltuxoficial/",
   "catalogoUrl": "https://www.vendamax.app/lj/voltux-infomatica",
   "imagens": {
-    "hero": "assets/roxo.jpeg",
-    "catalogo": "assets/branco.jpeg",
+    "hero": "assets/8.png",
+    "catalogo": "assets/2.png",
     "servicos": "assets/servicos/montagem.jpg",
-    "sobre": "assets/branco.jpeg",
-    "rodape": "assets/roxo.jpeg"
+    "sobre": "assets/3.png",
+    "rodape": "assets/4.png"
   },
   "produtos": [],
   "servicos": [

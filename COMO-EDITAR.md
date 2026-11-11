@@ -20,3 +20,21 @@ O site não tem login de cliente, não recebe pagamento e não salva dados em se
 Os atalhos flutuantes ficam no canto inferior direito: Instagram em cima e WhatsApp embaixo. O WhatsApp aparece pequeno e mostra o texto quando o visitante passa o mouse ou navega pelo teclado.
 
 Montagem de PC e instalação de programas ficaram sob consulta. Atualize seus preços no editor quando definidos.
+
+## Várias fotos com troca automática
+
+Abra `admin.html`. Em **Imagens principais**, coloque uma foto por linha em cada área, por exemplo:
+
+```
+assets/roxo.jpeg
+assets/branco.jpeg
+assets/meu-setup.jpg
+```
+
+Os arquivos precisam existir nesses caminhos dentro da pasta do site; também é possível usar URLs completas https://. O editor não faz upload ou copia fotos do computador automaticamente.
+
+Escolha o intervalo de troca (3 a 30 segundos), clique em **Baixar loja-config.js** e substitua o arquivo antigo pelo baixado, como antes. Recarregue o site. Uma única foto continua fixa; duas ou mais alternam na ordem informada. Limite: 12 fotos por área.
+
+As galerias estão disponíveis na entrada, catálogo, cuidados/serviços, sobre e rodapé. As fotos individuais dos cards de serviço continuam sendo editadas no respectivo serviço.
+
+Com várias fotos, aparecem os controles **Pausar/Retomar** e **Próxima**. A troca automática pausa fora da tela, quando a aba está oculta e durante interação com os controles. Com movimento reduzido ativado no dispositivo, use Próxima para trocar manualmente.

@@ -6,12 +6,24 @@
     if (!value) return '';
     try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password ? url.href : ''; } catch { return ''; }
   }
+  function imageSources(value) {
+    return [...new Set((Array.isArray(value) ? value : typeof value === 'string' ? value.split(/\r?\n/) : []).filter(source => typeof source === 'string').map(source => source.trim()).filter(Boolean))];
+  }
+  function safeImageSource(source) {
+    return typeof source === 'string' && Boolean(source.trim()) && !/[\u0000-\u001f]/.test(source) && (Boolean(safeWebUrl(source)) || (!/^[a-z][a-z0-9+.-]*:/i.test(source) && !source.startsWith('//') && !source.includes('\\')));
+  }
   function validateConfig(config) {
     const errors = [];
     if (!config || typeof config !== 'object') return ['Configuração inválida.'];
     if (!/^\d{12,15}$/.test(config.whatsapp || '')) errors.push('Informe o WhatsApp com DDI e DDD, usando somente números.');
     if (!safeWebUrl(config.instagram)) errors.push('Informe um link válido para o Instagram.');
     if (config.catalogoUrl && !safeWebUrl(config.catalogoUrl)) errors.push('O catálogo precisa de um link completo, começando com https:// ou http://.');
+    if (config.intervaloFotos !== undefined && (!Number.isInteger(config.intervaloFotos) || config.intervaloFotos < 3 || config.intervaloFotos > 30)) errors.push('O intervalo das fotos deve ser de 3 a 30 segundos.');
+    for (const [area, value] of Object.entries(config.imagens || {})) {
+      if (!(typeof value === 'string' || (Array.isArray(value) && value.every(source => typeof source === 'string')))) { errors.push(`A lista de fotos de ${area} é inválida.`); continue; }
+      const sources = imageSources(value);
+      if (sources.length > 12 || sources.some(source => !safeImageSource(source))) errors.push(`Use até 12 fotos válidas em ${area}, com caminhos locais ou links https://.`);
+    }
     const ids = new Set();
     for (const [key, label] of [['produtos', 'produto'], ['servicos', 'serviço']]) {
       if (!Array.isArray(config[key])) { errors.push(`A lista de ${key} é inválida.`); continue; }
@@ -49,7 +61,7 @@
     return lines.length ? `Olá, Voltux! Vim pelo site e tenho interesse nestes itens:\n\n${lines.join('\n')}\n\nPodem confirmar as opções, os valores e combinar o atendimento comigo?` : 'Olá, Voltux! Vim pelo site e gostaria de conversar.';
   }
   function whatsappUrl(phone, message) { return `https://wa.me/${String(phone).replace(/\D/g, '')}?text=${encodeURIComponent(message)}`; }
-  const api = { money, formatPrice, safeWebUrl, validateConfig, itemsById, normalizeCart, messageForCart, whatsappUrl };
+  const api = { money, formatPrice, safeWebUrl, imageSources, safeImageSource, validateConfig, itemsById, normalizeCart, messageForCart, whatsappUrl };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.VoltuxCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

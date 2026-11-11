@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -13,6 +13,8 @@
   <script src="loja-config.js" defer></script>
   <script src="loja-core.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="visual.js" defer></script>
+  <script src="galerias.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#servicos">Ir para os serviços</a>
@@ -33,30 +35,35 @@
         <a href="#servicos" data-nav="servicos">Serviços</a>
         <a href="#sobre" data-nav="sobre">Sobre</a>
       </nav>
-      <button class="cart-toggle" type="button" data-open-cart aria-haspopup="dialog" aria-controls="cart-dialog"><svg class="icon"><use href="#i-bag"/></svg><span class="cart-label">Carrinho</span><span class="cart-count" data-cart-count>0</span></button>
+      <button class="cart-toggle" type="button" data-open-cart aria-haspopup="dialog" aria-controls="cart-dialog" aria-label="Abrir carrinho de serviços"><svg class="icon"><use href="#i-bag"/></svg><span class="cart-label">Carrinho de serviços</span><span class="cart-count" data-cart-count>0</span></button>
     </div>
   </header>
+  <nav class="section-tracker" aria-label="Explorar seções">
+    <a href="#inicio" data-section-link="inicio" aria-current="location"><span>01</span><b>Seu setup</b></a>
+    <a href="#catalogo" data-section-link="catalogo"><span>02</span><b>Catálogo</b></a>
+    <a href="#cuidados" data-section-link="cuidados"><span>03</span><b>Cuidados</b></a>
+    <a href="#lista-servicos" data-section-link="lista-servicos"><span>04</span><b>Serviços</b></a>
+  </nav>
   <main>
-    <section class="main-hero immersive-section" id="inicio" aria-labelledby="main-title" data-bg-slot="hero"><canvas class="particle-canvas" id="voltux-particles" aria-hidden="true"></canvas>
+    <section class="main-hero immersive-section" id="inicio" aria-labelledby="main-title" data-bg-slot="hero"><div class="hero-stage"><canvas class="particle-canvas" id="voltux-particles" aria-hidden="true"></canvas>
       <div class="hero-watermark" aria-hidden="true"><img src="assets/logo-voltux.png" alt="" width="1024" height="1024"></div><div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-layout container">
         <div class="hero-copy" data-reveal>
           <p class="eyebrow"><span class="live-dot"></span> TECNOLOGIA. POTÊNCIA. PERTO DE VOCÊ.</p>
-          <h1 id="main-title">Seu próximo<br><span>nível.</span></h1>
-          <p class="hero-description"></p>
-          <div class="hero-actions"><a class="button button-red" href="#catalogo">Abrir catálogo <svg class="icon"><use href="#i-arrow"/></svg></a><a class="text-link" href="#servicos">Conhecer os serviços</a></div>
-          <p class="hero-note">Atendimento local | Compra combinada pelo WhatsApp</p><div class="hero-trust-strip" aria-label="Diferenciais de segurança"><span>Atendimento direto</span><span>Sem login obrigatório</span><span>Orçamento confirmado no WhatsApp</span></div>
-        </div>
+          <h1 id="main-title">SEU PRÓXIMO PC.<br><span>DO SEU JEITO.</span></h1>
+          <p class="hero-description">Seu objetivo. Seu setup. A Voltux monta com você.</p>
+          <div class="hero-actions"><a class="button button-red" data-catalog-link href="https://www.vendamax.app/lj/voltux-infomatica" target="_blank" rel="noopener noreferrer">Abrir catálogo <svg class="icon"><use href="#i-arrow"/></svg></a><a class="text-link" data-whatsapp="Olá, Voltux! Quero montar um PC para meu objetivo e orçamento." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer">Montar meu PC <span aria-hidden="true">↗</span></a></div>
+          </div>
         <div class="hero-visual" data-parallax><div class="hero-image media-slot" data-image-slot="hero-pc" role="img" aria-label="Espaço reservado para a foto do PC Voltux"></div><span class="visual-corner corner-top" aria-hidden="true"></span><span class="visual-corner corner-bottom" aria-hidden="true"></span><span class="visual-caption">PERFORMANCE EM CADA DETALHE</span></div>
       </div>
-      <a class="scroll-cue" href="#servicos"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> CONHEÇA NOSSOS SERVIÇOS</a>
+      <a class="scroll-cue" href="#servicos"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> CONHEÇA NOSSOS SERVIÇOS</a></div>
     </section>
     <section class="catalog-section container" id="catalogo" aria-labelledby="catalog-title">
       <div class="catalog-panel immersive-panel" data-bg-slot="catalogo" data-reveal><div><p class="eyebrow">TUDO PARA O SEU SETUP</p><h2 id="catalog-title">O catálogo completo.<br>A escolha é sua.</h2><p>Veja todas as opções e valores atualizados no nosso catálogo.</p><a class="button button-red" id="catalog-link" href="https://www.vendamax.app/ct/voltux-oficial" target="_blank" rel="noopener noreferrer">Abrir catálogo completo</a><p class="catalog-note">Escolheu? Envie o nome ou o link do item pelo WhatsApp.</p></div><div class="catalog-image media-slot" data-image-slot="catalogo" role="img" aria-label="Espaço reservado para a imagem do catálogo"></div></div>
     </section>
     <section class="services-section immersive-section" id="servicos" aria-labelledby="services-title" data-bg-slot="servicos">
       <div class="services-shell">
-        <div class="services-hero">
+        <div class="services-hero" id="cuidados">
           <div class="services-hero-image media-slot"><img src="assets/servicos/montagem.jpg" alt="Detalhes de uma placa-mãe de computador" width="1200" height="800" loading="lazy"></div>
           <div class="services-intro" data-reveal><p class="eyebrow">02 / SERVIÇOS</p><h2 id="services-title">SEU PC.<br>NOSSO CUIDADO.</h2><p>Converse com quem vai cuidar do seu setup.<br>Escolha um serviço e combine o atendimento.</p><a class="services-hero-link" href="#lista-servicos"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> CONHECER SERVIÇOS</a></div>
           <span class="services-side-label" aria-hidden="true">ENERGIA PARA IR ALÉM</span>
@@ -160,12 +167,16 @@
           <a class="footer-pill magnetic-pill" href="#inicio">Voltar ao topo</a>
         </div>
       </div>
-      <div class="footer-security cinematic-security" aria-label="Selo de site seguro"><svg class="icon"><use href="#i-lock"/></svg><div><strong>Site seguro</strong><span>Sem login de cliente. Finalização direta pelo WhatsApp.</span></div></div>
+      <div class="footer-security cinematic-security" aria-label="Selo de site seguro"><svg class="icon"><use href="#i-lock"/></svg><div><strong>Atendimento direto</strong><span>Escolha seus serviços e combine os detalhes com a Voltux pelo WhatsApp.</span></div></div>
     </div>
+    <div class="halftone-wordmark"><span class="halftone-fallback" aria-hidden="true">VOLTUX</span><canvas id="footer-halftone" aria-hidden="true"></canvas><span class="sr-only">Voltux Informática</span></div>
   </footer>
-  <div class="floating-socials" aria-label="Atalhos sociais"><a class="instagram-float" data-instagram href="https://www.instagram.com/voltuxoficial/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Voltux"><svg class="icon"><use href="#i-instagram"/></svg></a><a class="whatsapp-float" data-whatsapp="Olá, Voltux! Vim pelo site e gostaria de conversar." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Voltux no WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg><span>Falar no WhatsApp</span></a></div>
-  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title"><div class="cart-shell"><header class="cart-header"><div><p class="eyebrow">VAMOS CONVERSAR?</p><h2 id="cart-title">Seu carrinho</h2></div><button class="icon-button" type="button" id="close-cart" aria-label="Fechar carrinho"><svg class="icon"><use href="#i-close"/></svg></button></header><p class="cart-explanation">Escolha os serviços e combine o atendimento diretamente com a loja.</p><div id="cart-items" class="cart-items"></div><footer class="cart-footer"><div id="cart-summary"></div><a class="button button-whatsapp" id="cart-checkout" href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-whatsapp"/></svg>Continuar no WhatsApp</a><button class="text-link" id="continue-browsing" type="button">Continuar explorando</button></footer></div></dialog>
+  <div class="floating-socials" aria-label="Atalhos sociais"><a class="instagram-float" data-instagram href="https://www.instagram.com/voltuxoficial/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Voltux"><svg class="icon"><use href="#i-instagram"/></svg></a><a class="whatsapp-float" data-whatsapp="Olá, Voltux! Vim pelo site e gostaria de conversar." href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Voltux no WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg><span>Atendimento Voltux</span></a></div>
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title"><div class="cart-shell"><header class="cart-header"><div><p class="eyebrow">VAMOS CONVERSAR?</p><h2 id="cart-title">Seus serviços</h2></div><button class="icon-button" type="button" id="close-cart" aria-label="Fechar carrinho"><svg class="icon"><use href="#i-close"/></svg></button></header><p class="cart-explanation">Escolha os serviços e combine o atendimento diretamente com a loja.</p><div id="cart-items" class="cart-items"></div><footer class="cart-footer"><div id="cart-summary"></div><a class="button button-whatsapp" id="cart-checkout" href="https://wa.me/5531997125608" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-whatsapp"/></svg>Continuar no WhatsApp</a><button class="text-link" id="continue-browsing" type="button">Continuar explorando</button></footer></div></dialog>
   <div class="toast" role="status" aria-live="polite" id="toast"></div>
   <noscript><p class="noscript-message">Ative o JavaScript para explorar os itens e montar seu carrinho. Você também pode <a href="https://wa.me/5531997125608">falar diretamente com a Voltux no WhatsApp</a>.</p></noscript>
 </body>
 </html>
+
+
+

@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   'use strict';
   const config = window.VOLTUX_CONFIG;
   const core = window.VoltuxCore;
@@ -42,13 +42,14 @@
   }
   function fillStaticImage(slotName, source, alt) {
     const slot = document.querySelector(`[data-image-slot="${slotName}"]`);
-    const cleanSource = typeof source === 'string' ? source.trim() : '';
+    const cleanSource = core.imageSources(source)[0] || '';
     if (!slot || !cleanSource) return;
     if (!core.safeWebUrl(cleanSource) && (/^[a-z][a-z0-9+.-]*:/i.test(cleanSource) || cleanSource.startsWith('//'))) return;
     const image = el('img');
     image.src = cleanSource;
     image.alt = alt;
-    image.loading = 'lazy';
+    image.loading = slotName === 'hero-pc' ? 'eager' : 'lazy';
+    if (slotName === 'hero-pc') image.fetchPriority = 'high';
     image.decoding = 'async';
     image.width = 900;
     image.height = 700;
@@ -57,7 +58,7 @@
     slot.replaceChildren(image);
   }
   function cssImageValue(source) {
-    const cleanSource = typeof source === 'string' ? source.trim() : '';
+    const cleanSource = core.imageSources(source)[0] || '';
     if (!cleanSource) return '';
     if (!core.safeWebUrl(cleanSource) && (/^[a-z][a-z0-9+.-]*:/i.test(cleanSource) || cleanSource.startsWith('//'))) return '';
     return `url("${cleanSource.replace(/[\\"]/g, '\\$&')}")`;
@@ -186,6 +187,7 @@
 
   const catalog = document.getElementById('catalog-link');
   catalog.href = core.safeWebUrl(config.catalogoUrl) || core.whatsappUrl(config.whatsapp, 'Olá, Voltux! Gostaria de receber o catálogo.');
+  document.querySelectorAll('[data-catalog-link]').forEach(link => { link.href = catalog.href; });
   if (!config.catalogoUrl) catalog.textContent = 'Pedir catálogo no WhatsApp';
   fillStaticImage('hero-pc', config.imagens?.hero, 'PC gamer montado pela Voltux');
   fillStaticImage('catalogo', config.imagens?.catalogo, 'Produtos disponíveis no catálogo da Voltux');
@@ -346,7 +348,10 @@
   function scheduleScroll() { if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateScroll); } }
   window.addEventListener('scroll', scheduleScroll, { passive: true });
   window.addEventListener('resize', scheduleScroll, { passive: true });
-  initParticleCanvas();
+  // A direção visual atual dispensa a animação contínua de partículas.
   initMagneticFooter();
   updateScroll();
 })();
+
+
+

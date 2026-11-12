@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -6,10 +6,12 @@
   <meta name="theme-color" content="#050709">
   <meta name="description" content="Voltux: computadores gamers, componentes e serviços para seu PC. Escolha os itens e converse diretamente com a loja pelo WhatsApp.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Voltux - Seu próximo nível começa aqui</title>
   <link rel="icon" type="image/png" href="assets/logo-voltux.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="location.css">
+  <script type="module" src="location.js"></script>
   <script src="loja-config.js" defer></script>
   <script src="loja-core.js" defer></script>
   <script src="app.js" defer></script>
@@ -150,6 +152,7 @@
         </div>
       </div>
     </section>
+    <section class="container voltux-location" id="localizacao" aria-label="Localização da Voltux"><p class="eyebrow">DO MUNDO ATÉ A VOLTUX</p><h2>Seu próximo setup<br>tem um endereço.</h2><netflash-location></netflash-location></section>
   </main>
     <footer class="cinematic-footer" data-bg-slot="rodape">
     <div class="footer-ambient" aria-hidden="true"></div>

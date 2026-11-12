@@ -15,6 +15,12 @@
   function validateConfig(config) {
     const errors = [];
     if (!config || typeof config !== 'object') return ['Configuração inválida.'];
+    const location=config.localizacao;
+    if(location){
+      if((location.lat==null)!==(location.lng==null))errors.push('Informe latitude e longitude juntas.');
+      if(location.lat!=null&&(!Number.isFinite(location.lat)||Math.abs(location.lat)>90||!Number.isFinite(location.lng)||Math.abs(location.lng)>180))errors.push('Coordenadas de localização inválidas.');
+      if(location.embedUrl){try{const url=new URL(location.embedUrl);if(url.origin!=='https://www.google.com'||url.pathname!=='/maps/embed'||!url.searchParams.has('pb'))errors.push('Use somente a URL src de incorporação do Google Maps.');}catch{errors.push('URL de incorporação inválida.');}}
+    }
     if (!/^\d{12,15}$/.test(config.whatsapp || '')) errors.push('Informe o WhatsApp com DDI e DDD, usando somente números.');
     if (!safeWebUrl(config.instagram)) errors.push('Informe um link válido para o Instagram.');
     if (config.catalogoUrl && !safeWebUrl(config.catalogoUrl)) errors.push('O catálogo precisa de um link completo, começando com https:// ou http://.');

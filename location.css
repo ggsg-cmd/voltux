@@ -1,0 +1,19 @@
+.voltux-location {
+  padding-block: 90px;
+}
+.voltux-location > h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  margin: 18px 0 34px;
+  line-height: 1.1;
+}
+.voltux-location netflash-location {
+  --location-panel: #0b121d;
+  --location-border: #193442;
+  --location-accent: #06b6d4;
+  --location-text: #f1f6fb;
+}
+@media (max-width: 650px) {
+  .voltux-location {
+    padding-block: 55px;
+  }
+}

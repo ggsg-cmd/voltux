@@ -1,5 +1,15 @@
 # Atualizar a Voltux
 
+## Localização com globo e satélite
+
+O editor agora tem endereço, latitude/longitude e incorporação de mapa. A Voltux já está configurada com o endereço e o link de Google Maps enviados pelo proprietário. O globo inicia ao entrar na seção e transiciona para a imagem de satélite oficial. Coordenadas confirmadas: -20.0220771, -44.0660272.
+
+Para publicar esta atualização, envie também `location.js`, `location.css`, `vendor/location-globe/` e os arquivos alterados (index.html, loja-config.js, loja-core.js e admin.js). Não basta enviar somente loja-config.js na primeira instalação do recurso. Não há chave Google nesta integração; o iframe foi gerado pelo Compartilhar → Incorporar do Maps.
+
+As próximas alterações de endereço/mapa continuam pelo editor e download da configuração. Guia do recurso reutilizável: `../../componentes/location-globe/README.md`.
+
+## Edição dos serviços
+
 1. Abra `admin.html` no navegador.
 2. Altere preços, textos, imagens principais, fotos dos serviços ou o link do catálogo. “Sob consulta” deixa o serviço sem preço fixo.
 3. Clique em **Baixar loja-config.js** e substitua o arquivo de mesmo nome na pasta do site. Se o navegador acrescentar `(1)` ao nome, renomeie para `loja-config.js`.

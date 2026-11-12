@@ -83,6 +83,11 @@
   document.getElementById('setting-image-footer').value = core.imageSources(original.imagens?.rodape).join('\n');
   document.getElementById('setting-image-interval').value = original.intervaloFotos || 6;
   const readImages = id => { const sources = core.imageSources(document.getElementById(id).value); return sources.length > 1 ? sources : sources[0] || ''; };
+  const locationSection=element('section','admin-section');locationSection.id='location-editor';locationSection.append(element('h2','','Localização com globo e satélite'));
+  locationSection.append(element('p','admin-help','Informe o endereço. Coordenadas exatas são opcionais e devem ser confirmadas no Maps. Para o satélite dentro do site, cole uma URL de incorporação do Google Maps ou uma chave restrita à Maps Embed API.'));
+  const locationFields=element('div','admin-settings');
+  for(const [key,label,type] of [['address','Endereço completo'],['lat','Latitude exata','number'],['lng','Longitude exata','number'],['embedUrl','URL de incorporação Google Maps (somente src)','url'],['googleMapsKey','Chave pública Maps Embed API (opcional)']]){const input=field(locationFields,label,key,original.localizacao?.[key],type);input.maxLength=5000;if(type==='number')input.step='any';}
+  locationSection.append(locationFields);form.querySelector('.admin-section').after(locationSection);
   original.servicos.forEach(item => addRow(item, true));
   function newId(prefix) { return `${prefix}-${Date.now().toString(36)}-${++rowCounter}`; }
   document.getElementById('add-service').addEventListener('click', () => {
@@ -104,6 +109,7 @@
     if (!form.reportValidity()) return;
     const config = {
       versao: 1,
+      localizacao:Object.fromEntries([...locationFields.querySelectorAll('input')].map(input=>[input.dataset.field,['lat','lng'].includes(input.dataset.field)?(input.value===''?null:Number(input.value)):input.value.trim()])),
       intervaloFotos: Number(document.getElementById('setting-image-interval').value),
       whatsapp: document.getElementById('setting-whatsapp').value.trim(),
       instagram: document.getElementById('setting-instagram').value.trim(),

@@ -1,5 +1,7 @@
 # Atualizar a Voltux
 
+**Correção de 16/11/2026:** o index abre diretamente pelo navegador, inclusive o globo, com location.bundle.js. O conteúdo de PUBLICAR-HOJE/VOLTUX é a entrega pronta para o GitHub. Preserve location.bundle.js, location.css e vendor/location-globe junto dos outros arquivos. Não é necessário CMD para visualizar o site.
+
 ## Localização com globo e satélite
 
 O editor agora tem endereço, latitude/longitude e incorporação de mapa. A Voltux já está configurada com o endereço e o link de Google Maps enviados pelo proprietário. O globo inicia ao entrar na seção e transiciona para a imagem de satélite oficial. Coordenadas confirmadas: -20.0220771, -44.0660272.

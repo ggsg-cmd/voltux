@@ -13,11 +13,11 @@ window.VOLTUX_CONFIG = {
   "instagram": "https://www.instagram.com/voltuxoficial/",
   "catalogoUrl": "https://www.vendamax.app/lj/voltux-infomatica",
   "imagens": {
-    "hero": "assets/8.png",
-    "catalogo": "assets/2.png",
-    "servicos": "assets/servicos/montagem.jpg",
-    "sobre": "assets/3.png",
-    "rodape": "assets/4.png"
+    "hero": "assets--8.png",
+    "catalogo": "assets--2.png",
+    "servicos": "assets--servicos--montagem.jpg",
+    "sobre": "assets--3.png",
+    "rodape": "assets--4.png"
   },
   "produtos": [],
   "servicos": [
@@ -25,7 +25,7 @@ window.VOLTUX_CONFIG = {
       "id": "troca-peca",
       "nome": "Troca de peça",
       "descricao": "Instalação da peça para o seu computador.",
-      "imagem": "assets/servicos/pecas.jpg",
+      "imagem": "assets--servicos--pecas.jpg",
       "preco": 25,
       "observacaoPreco": "+ valor da peça",
       "aPartirDe": true
@@ -34,7 +34,7 @@ window.VOLTUX_CONFIG = {
       "id": "limpeza-comum",
       "nome": "Limpeza comum",
       "descricao": "O cuidado de rotina que seu computador precisa.",
-      "imagem": "assets/servicos/limpeza.jpg",
+      "imagem": "assets--servicos--limpeza.jpg",
       "preco": 95,
       "observacaoPreco": "",
       "aPartirDe": true
@@ -43,7 +43,7 @@ window.VOLTUX_CONFIG = {
       "id": "limpeza-premium",
       "nome": "Limpeza a Domicílio",
       "descricao": "Uma limpeza mais cuidadosa para o seu setup.",
-      "imagem": "assets/servicos/montagem.jpg",
+      "imagem": "assets--servicos--montagem.jpg",
       "preco": 130,
       "observacaoPreco": "",
       "aPartirDe": true
@@ -52,7 +52,7 @@ window.VOLTUX_CONFIG = {
       "id": "formatacao",
       "nome": "Formatação Completa e Otimizada",
       "descricao": "Um novo começo para o sistema do seu PC.",
-      "imagem": "assets/servicos/software.jpg",
+      "imagem": "assets--servicos--software.jpg",
       "preco": 89,
       "observacaoPreco": "",
       "aPartirDe": false
@@ -61,7 +61,7 @@ window.VOLTUX_CONFIG = {
       "id": "montagem-pc",
       "nome": "Montagem de PC",
       "descricao": "Converse com a Voltux sobre a montagem do seu computador.",
-      "imagem": "assets/servicos/montagem.jpg",
+      "imagem": "assets--servicos--montagem.jpg",
       "preco": 180,
       "observacaoPreco": "",
       "aPartirDe": true
@@ -70,7 +70,7 @@ window.VOLTUX_CONFIG = {
       "id": "instalacao-programas",
       "nome": "Instalação de programas",
       "descricao": "Instalação e configuração dos programas que você utiliza.",
-      "imagem": "assets/servicos/software.jpg",
+      "imagem": "assets--servicos--software.jpg",
       "preco": null,
       "observacaoPreco": "",
       "aPartirDe": false

@@ -1,0 +1,10 @@
+SITE VOLTUX — SOMENTE ARQUIVOS
+
+Abra index.html para conferir. Selecione todos os arquivos desta pasta e envie ao repositório do site no GitHub. Não envie o ZIP como único arquivo.
+
+GitHub Pages: Settings > Pages > Deploy from a branch > main > /(root).
+Vercel: Other, sem instalação/build, saída na raiz.
+
+Os nomes com -- são normais: substituem os caminhos antigos das pastas. Não os renomeie individualmente. Preserve paths.js e todos os arquivos de imagens e estilos.
+
+O painel que grava no computador continua no projeto original; esta é a entrega de publicação.

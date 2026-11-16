@@ -1,0 +1,239 @@
+:host {
+  display: block;
+  --location-accent: var(--accent, #06b6d4);
+  --location-text: inherit;
+  font-family: inherit;
+  color: var(--location-text);
+}
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+.location {
+  border: 1px solid var(--location-border, #ffffff20);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--location-panel, #0d1520);
+}
+.stage {
+  height: 450px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 50% 42%, #183347, #080e17 75%);
+}
+.earth {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #338ab8, #102f51 65%, #061423);
+  box-shadow:
+    0 0 30px #62c9ff25,
+    0 0 3px #b6efff,
+    inset -25px -10px 40px #0008;
+  transition:
+    transform 1.3s cubic-bezier(0.3, 0, 0.2, 1),
+    opacity 0.8s;
+}
+.earth canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+.arrived .earth {
+  transform: scale(1.35);
+}
+.pin {
+  position: absolute;
+  left: calc(50% - 5px);
+  top: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border: 2px solid var(--location-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px #ffffff12;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.arrived .pin {
+  opacity: 1;
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, #fff8 98%, transparent),
+    radial-gradient(1px 1px at 78% 35%, #fff8 98%, transparent),
+    radial-gradient(1px 1px at 32% 80%, #fff5 98%, transparent),
+    radial-gradient(1px 1px at 88% 75%, #fff8 98%, transparent),
+    radial-gradient(1px 1px at 63% 10%, #fff5 98%, transparent);
+  pointer-events: none;
+}
+.orbit {
+  position: absolute;
+  width: 430px;
+  height: 220px;
+  border: 1px solid #86d9ff20;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+.stage-label {
+  position: absolute;
+  bottom: 23px;
+  left: 24px;
+  right: 24px;
+  text-align: center;
+  color: #d2e8f5;
+  pointer-events: none;
+}
+.kicker {
+  display: block;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #b2d6e6;
+}
+.globe-credit{display:block;font-size:7px;letter-spacing:.5px;opacity:.65;margin-top:8px}
+.stage-status {
+  display: block;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.map-slot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s;
+  pointer-events: none;
+}
+.map-slot iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.map-visible .map-slot {
+  opacity: 1;
+  pointer-events: auto;
+}
+.map-visible .stage-label {
+  display: none;
+}
+.map-visible .earth {
+  transform: scale(2.2);
+  opacity: 0;
+}
+.address-panel {
+  padding: 27px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: var(--location-panel, #0d1520);
+}
+.badge {
+  display: block;
+  font-size: 8px;
+  font-weight: 650;
+  letter-spacing: 2px;
+  color: var(--location-accent);
+}
+h3 {
+  font: inherit;
+  font-size: 23px;
+  font-weight: 550;
+  margin: 12px 0 9px;
+}
+.address {
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 620px;
+}
+.note {
+  font-size: 10px;
+  line-height: 1.7;
+  opacity: 0.7;
+  max-width: 550px;
+  margin: 10px 0 0;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: start;
+  flex-shrink: 0;
+}
+a,
+button {
+  font: inherit;
+  font-size: 11px;
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: none;
+  padding: 4px 0;
+  cursor: pointer;
+  line-height: 1.5;
+}
+a:hover,
+button:hover {
+  color: var(--location-accent);
+}
+:focus-visible {
+  outline: 3px solid var(--location-accent);
+  outline-offset: 5px;
+}
+@media (max-width: 650px) {
+  .stage {
+    height: 355px;
+  }
+  .address-panel {
+    padding: 24px;
+    flex-direction: column;
+    align-items: start;
+    gap: 22px;
+  }
+  .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .orbit {
+    width: 330px;
+    height: 190px;
+  }
+  .earth {
+    width: 220px;
+    height: 220px;
+  }
+  .address {
+    font-size: 12px;
+  }
+  h3 {
+    font-size: 21px;
+  }
+  .stage-label {
+    bottom: 18px;
+  }
+  .stage-status {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

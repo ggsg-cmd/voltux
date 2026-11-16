@@ -193,7 +193,7 @@
   fillStaticImage('catalogo', config.imagens?.catalogo, 'Produtos disponíveis no catálogo da Voltux');
   fillBackground('hero', config.imagens?.hero || 'assets/roxo.jpeg');
   fillBackground('catalogo', config.imagens?.catalogo || 'assets/branco.jpeg');
-  fillBackground('servicos', config.imagens?.servicos || 'assets/servicos/montagem.jpg');
+  fillBackground('servicos', config.imagens?.servicos || 'assets--servicos--montagem.jpg');
   fillBackground('sobre', config.imagens?.sobre || 'assets/branco.jpeg');
   fillBackground('rodape', config.imagens?.rodape || 'assets/roxo.jpeg');
   document.querySelectorAll('[data-whatsapp]').forEach(link => { link.href = core.whatsappUrl(config.whatsapp, link.dataset.whatsapp); });

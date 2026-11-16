@@ -1,4 +1,4 @@
-﻿@font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+﻿@font-face { font-family: "Bebas Neue"; src: url("assets--fonts--BebasNeue-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
 :root { color-scheme: dark; --page: #050709; --panel: #11151b; --text: #fff; --muted: #939aa5; --red: #f0002f; --cyan: #00cfff; --line: #ffffff19; --green: #25d366; --font: "Segoe UI", Arial, sans-serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 105px; }

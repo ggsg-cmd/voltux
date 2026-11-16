@@ -18,7 +18,7 @@ Object.assign(__exports,{});
 },
 function(__exports,__require){
 /** Netflash: globo decorativo + transição para um mapa oficial. Sem dependências. */
-const base = new URL("./", new URL("vendor/location-globe/location-globe.js",document.baseURI).href);
+const base = new URL("./", new URL("vendor--location-globe--location-globe.js",document.baseURI).href);
 function coordinates(value) {
   const lat = value?.lat,
     lng = value?.lng;
@@ -112,7 +112,7 @@ class LocationGlobe extends (globalThis.HTMLElement || class {}) {
     this.cleanup();
     this.listeners = new AbortController();
     const signal = this.listeners.signal;
-    this.shadowRoot.innerHTML = `<link rel="stylesheet" href="${new URL("location-globe.css", base).href}"><section class="location"><div class="stage"><div class="stars" aria-hidden="true"></div><div class="orbit" aria-hidden="true"></div><div class="earth"><canvas width="230" height="230" aria-hidden="true"></canvas><span class="pin" aria-hidden="true"></span></div><div class="map-slot"></div><div class="stage-label"><span class="kicker">DO MUNDO ATÉ VOCÊ</span><span class="stage-status" role="status" aria-live="polite">Nossa localização</span></div></div><div class="address-panel"><div><span class="badge"></span><h3></h3><p class="address"></p><p class="note"></p></div><div class="actions"><a target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a><button type="button">Ver localização</button></div></div></section>`;
+    this.shadowRoot.innerHTML = `<link rel="stylesheet" href="${new URL("vendor--location-globe--location-globe.css", base).href}"><section class="location"><div class="stage"><div class="stars" aria-hidden="true"></div><div class="orbit" aria-hidden="true"></div><div class="earth"><canvas width="230" height="230" aria-hidden="true"></canvas><span class="pin" aria-hidden="true"></span></div><div class="map-slot"></div><div class="stage-label"><span class="kicker">DO MUNDO ATÉ VOCÊ</span><span class="stage-status" role="status" aria-live="polite">Nossa localização</span></div></div><div class="address-panel"><div><span class="badge"></span><h3></h3><p class="address"></p><p class="note"></p></div><div class="actions"><a target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a><button type="button">Ver localização</button></div></div></section>`;
     this.stage = this.shadowRoot.querySelector(".stage");
     this.earth = this.shadowRoot.querySelector(".earth");
     this.canvas = this.shadowRoot.querySelector("canvas");
@@ -168,7 +168,7 @@ class LocationGlobe extends (globalThis.HTMLElement || class {}) {
   async texture() {
     if (this.pixels) return;
     const image = new Image();
-    image.src = globalThis.NETFLASH_EARTH_TEXTURE || new URL("earth.jpg", base).href;
+    image.src = globalThis.NETFLASH_EARTH_TEXTURE || new URL("vendor--location-globe--earth.jpg", base).href;
     await image.decode();
     const canvas = document.createElement("canvas");
     canvas.width = 1024;
